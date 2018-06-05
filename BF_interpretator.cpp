@@ -54,7 +54,11 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    ifstream in("input.bf");
+    ifstream in;
+    string file;
+    cin >> file;
+    const char * c = file.c_str();
+    in.open(c);
     string s = "", s1;
     while(in>>s1){
         if(s1.size()>1&&s1[0]==s1[1]&&s1[0]=='/'){
@@ -63,6 +67,7 @@ int main(){
         else
             s += s1;
     }
+    cout << s << endl;
     bf(s);
 
     return 0;
