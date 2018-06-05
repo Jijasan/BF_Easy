@@ -63,7 +63,6 @@ int main(){
         else
             s += s1;
     }
-    cout << s << endl;
     bf(s);
 
     return 0;
