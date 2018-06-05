@@ -1,5 +1,6 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <fstream>
 #include <vector>
 #include <cmath>
 #include <set>
@@ -7,7 +8,7 @@
 using namespace std;
 
 vector<int> a(30000, 0);
-int it = 0;
+int it = 0, maxn = 0;
 
 void bf(string s){
 	for(int i = 0; i<s.size(); i++){
@@ -17,10 +18,11 @@ void bf(string s){
 			a[it]--;
 		if(s[i]=='>')
 			it++;
+        maxn = max(maxn, it+1);
 		if(s[i]=='<')
 			it--;
 		if(s[i]=='.')
-			cout << a[it];
+			cout << a[it] << ' ';
 		if(s[i]==',')
 			cin >> a[it];
 		if(s[i]=='['){
@@ -35,9 +37,15 @@ void bf(string s){
 					break;
 				s1 = s1+s[i];
 			}
-			while(a[it]){
+			while(a[it]>0){
 				bf(s1);
 			}
+		}
+		if(s[i]=='#'){
+            cout << it << ':';
+            for(int j = 0; j<maxn; j++)
+                cout << a[j] << ' ';
+            cout << endl;
 		}
 	}
 }
@@ -46,8 +54,16 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    string s;
-    cin >> s;
+    ifstream in("input.bf");
+    string s = "", s1;
+    while(in>>s1){
+        if(s1.size()>1&&s1[0]==s1[1]&&s1[0]=='/'){
+            getline(in, s1);
+        }
+        else
+            s += s1;
+    }
+    cout << s << endl;
     bf(s);
 
     return 0;
