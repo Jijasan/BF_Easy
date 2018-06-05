@@ -1,10 +1,13 @@
-// start_cell:{finish_cell=something}
+// [start_cell]:{[finish_cell]=something}
 
-//addition 0:{1=0+1}
+//addition [0]:{[1]=[0]+[1]}
 [->+<]>
 
-//subtraction 0:{0=0-1}
+//subtraction [0]:{[0]=[0]-[1]}
 [->-<]
 
-//multiplication 0:{3=0*1} 2 is void
+//multiplication [0]:{[3]=[0]*[1]} [2] is void
 [->[->+>+<<]>[-<+>]<<]>>>
+
+//division [0]:{[3]=[0]//[1]}{[4]=[0]%[1]}
+[[->->+>>+<<<<]>>>+<[-<+>]<]>>>
