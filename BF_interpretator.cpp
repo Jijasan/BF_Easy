@@ -10,7 +10,7 @@ using namespace std;
 vector<int> a(30000, 0);
 int it = 0, maxn = 0;
 
-void bf(string s, int d = 1){
+void bf(string s){
 	for(int i = 0; i<s.size(); i++){
 		if(s[i]=='+')
 			a[it]++;
@@ -38,7 +38,7 @@ void bf(string s, int d = 1){
 				s1 = s1+s[i];
 			}
 			while(a[it]>0){
-				bf(s1, d+1);
+				bf(s1);
 			}
 		}
 		if(s[i]=='#'){
