@@ -10,7 +10,7 @@ using namespace std;
 vector<int> a(30000, 0);
 int it = 0, maxn = 0;
 
-void bf(string s){
+void bf(string s, int d = 1){
 	for(int i = 0; i<s.size(); i++){
 		if(s[i]=='+')
 			a[it]++;
@@ -22,7 +22,7 @@ void bf(string s){
 		if(s[i]=='<')
 			it--;
 		if(s[i]=='.')
-			cout << a[it] << ' ';
+			cout << a[it] << endl;
 		if(s[i]==',')
 			cin >> a[it];
 		if(s[i]=='['){
@@ -38,7 +38,7 @@ void bf(string s){
 				s1 = s1+s[i];
 			}
 			while(a[it]>0){
-				bf(s1);
+				bf(s1, d+1);
 			}
 		}
 		if(s[i]=='#'){
@@ -50,13 +50,16 @@ void bf(string s){
 	}
 }
 
-int main(){
+int main(int argc, char *argv[]){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream in;
     string file;
-    cin >> file;
+    if(argc>1)
+        file = argv[1];
+    else
+        file = "input.bf";
     const char * c = file.c_str();
     in.open(c);
     string s = "", s1;
@@ -67,8 +70,8 @@ int main(){
         else
             s += s1;
     }
-    cout << s << endl;
     bf(s);
+    system("pause");
 
     return 0;
 }
