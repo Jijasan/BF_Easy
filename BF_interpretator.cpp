@@ -22,7 +22,7 @@ void bf(string s){
 		if(s[i]=='<')
 			it--;
 		if(s[i]=='.')
-			cout << a[it] << ' ';
+			cout << a[it] << endl;
 		if(s[i]==',')
 			cin >> a[it];
 		if(s[i]=='['){
