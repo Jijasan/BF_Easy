@@ -17,3 +17,8 @@
 
 //swap [0]:{[0]=[1]; [1]=[0]} [2] is void
 [->>+<<]>[-<+>]>[-<+>]<<
+
+//ifelse [0]:{if([0]){something1}else{something2}} [1] is void
+>+<
+[something1[-]>-<]
+>[something2-]<
